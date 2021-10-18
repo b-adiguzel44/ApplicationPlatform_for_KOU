@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "573207369959",
+    "project_id": "koubasvuruplatform",
+    "storage_bucket": "koubasvuruplatform.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573207369959:android:a09b14508a421be4556a42",
+        "android_client_info": {
+          "package_name": "com.yazlabgrup3.kou_basvuru_platform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573207369959-6fip5151u7ug6u91kc6kqc6tjgkk5ll4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-uJoZfL-P6btVXfn6i1g6XM2xJmEtTRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573207369959-6fip5151u7ug6u91kc6kqc6tjgkk5ll4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
