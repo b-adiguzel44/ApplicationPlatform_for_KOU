@@ -2,12 +2,26 @@ import 'package:flutter/material.dart';
 
 
 // Text Input Decoration
-const textInputDecoration = InputDecoration(
-  labelStyle: TextStyle(color: Colors.black54),
+final textInputDecoration = InputDecoration(
+  labelStyle: const TextStyle(color: Colors.black54),
   enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.green, width: 1.5)
+    borderSide: const BorderSide(color: Colors.green, width: 1.5),
+    borderRadius: BorderRadius.circular(10)
   ),
   focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.green, width: 2.0)
+    borderSide: const BorderSide(color: Colors.green, width: 2.0),
+    borderRadius: BorderRadius.circular(10)
   ),
+  errorBorder: OutlineInputBorder(
+      borderSide: const BorderSide(color: Colors.red, width: 2.0),
+      borderRadius: BorderRadius.circular(10)
+  ),
+  filled: true,
+  fillColor: Colors.white,
+);
+
+
+// Button Style
+final buttonStyle = ButtonStyle(
+    elevation:  MaterialStateProperty.all(3.0)
 );

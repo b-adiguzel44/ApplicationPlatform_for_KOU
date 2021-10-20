@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kou_basvuru_platform/screens/authenticate/admin_login.dart';
 import 'package:kou_basvuru_platform/screens/authenticate/student_login.dart';
+import 'package:kou_basvuru_platform/shared/constants.dart';
 
 
 class Authenticate extends StatefulWidget {
@@ -17,7 +18,7 @@ class _AuthenticateState extends State<Authenticate> {
       body: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/login_bg.jpg'),
                     fit: BoxFit.fill
@@ -25,18 +26,18 @@ class _AuthenticateState extends State<Authenticate> {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(100.0, 30.0, 0.0, 20.0),
-            padding: EdgeInsets.symmetric(vertical: 100.0, horizontal: 20.0),
+            margin: const EdgeInsets.fromLTRB(100.0, 30.0, 0.0, 20.0),
+            padding: const EdgeInsets.symmetric(vertical: 100.0, horizontal: 20.0),
             // color: Colors.brown[100],  // TODO : Silinecek propetry (şuanlık duruyor)
             child: Column(
               children: <Widget>[
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundImage: AssetImage('assets/kou2.png'),
                   backgroundColor: Colors.white,
                   radius: 70.0,
                 ),
-                SizedBox(height: 20.0),
-                Text(
+                const SizedBox(height: 20.0),
+                const Text(
                   'Kocaeli Üniversitesi\nBaşvuru Platformu',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold, fontFamily: 'roboto-bold'),
@@ -44,10 +45,9 @@ class _AuthenticateState extends State<Authenticate> {
                 SizedBox(height: 50),
                 // Öğrenci Login sayfasına yönlendirme
                 ElevatedButton.icon(
-                    style: ButtonStyle(
+                    style: buttonStyle.copyWith(
                       backgroundColor: MaterialStateProperty.all(Colors.green[600]),
                       overlayColor: MaterialStateProperty.all(Colors.green[200]),
-                      elevation: MaterialStateProperty.all(3.0)
                     ),
                     onPressed: () {
                       // Öğrenci Giriş Paneline git
@@ -55,15 +55,14 @@ class _AuthenticateState extends State<Authenticate> {
                           MaterialPageRoute(builder: (context) => StudentLogin() )
                       );
                     },
-                    icon: Icon(Icons.person),
-                    label: Text('Öğrenci Girişi')
+                    icon: const Icon(Icons.person),
+                    label: const Text('Öğrenci Girişi')
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton.icon(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.green[600]),
-                        overlayColor: MaterialStateProperty.all(Colors.green[200]),
-                        elevation: MaterialStateProperty.all(3.0)
+                    style: buttonStyle.copyWith(
+                      backgroundColor: MaterialStateProperty.all(Colors.green[600]),
+                      overlayColor: MaterialStateProperty.all(Colors.green[200]),
                     ),
                     onPressed: () {
                       // Admin Giriş Paneline git
@@ -71,8 +70,8 @@ class _AuthenticateState extends State<Authenticate> {
                           MaterialPageRoute(builder: (context) => AdminLogin() )
                       );
                     },
-                    icon: Icon(Icons.account_balance_outlined),
-                    label: Text('Yönetici Girişi')
+                    icon: const Icon(Icons.account_balance_outlined),
+                    label: const Text('Yönetici Girişi')
                 ),
 
               ],

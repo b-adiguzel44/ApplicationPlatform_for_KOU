@@ -13,7 +13,6 @@ class Home extends StatelessWidget {
       child: Center(
         child: CircleAvatar(
           radius: 50.0,
-
         ),
       ),
     );
