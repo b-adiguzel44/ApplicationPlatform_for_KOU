@@ -143,20 +143,7 @@ class _AdminLoginState extends State<AdminLogin> {
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                       ),
-
-                      // Şifremi Unuttum
-                      ElevatedButton(
-                        style: buttonStyle.copyWith(
-                          backgroundColor: MaterialStateProperty.all(Colors.red[700]),
-                          fixedSize: MaterialStateProperty.all(const Size.fromWidth(140))
-                        ),
-                        onPressed: () {
-                          print('Şifremi unuttum');
-                        },
-                        child: const Text("Şifremi Unuttum",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
+                      
 
 
                     ],

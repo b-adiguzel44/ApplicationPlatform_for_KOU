@@ -18,7 +18,7 @@ class _StudentLoginState extends State<StudentLogin> {
   // For validating our form fields we generate a GlobalKey, type of FormState
   final _formKey = GlobalKey<FormState>();
 
-  // editing controller
+  // Editing Controller
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
