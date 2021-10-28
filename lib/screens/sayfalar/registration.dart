@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kou_basvuru_platform/services/auth.dart';
+import 'package:kou_basvuru_platform/services/firebase_auth_servise.dart';
 
 class Registration extends StatefulWidget {
-  const Registration({Key? key}) : super(key: key);
+  final AuthService auth;
+  const Registration({Key? key,required this.auth}) : super(key: key);
 
   @override
   _RegistrationState createState() => _RegistrationState();
@@ -12,7 +14,7 @@ class _RegistrationState extends State<Registration> {
 
 
   // Creating our AuthService instance
-  final AuthService _auth = AuthService();
+
   // For validating our form fields we generate a GlobalKey, type of FormState
   final _formKey = GlobalKey<FormState>();
 

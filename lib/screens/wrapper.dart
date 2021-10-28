@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kou_basvuru_platform/screens/authenticate/authenticate.dart';
+import 'package:kou_basvuru_platform/screens/sayfalar/authenticate.dart';
 import 'package:kou_basvuru_platform/screens/home/home.dart';
 import 'package:kou_basvuru_platform/shared/loading.dart';
 import 'package:kou_basvuru_platform/models/my_user.dart';
@@ -13,18 +13,18 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // Accesing user data from the Provider (We're holding the UID of the logged in user)
-    final user = Provider.of<User?>(context);
+    final user = Provider.of<MyUser>(context);
 
 
     // if the user is null coming from the Provider
     // The user is signed out or didn't sign in at all
     if(user == null) {
-      return Authenticate();
+      return const Authenticate();
     }
     // if the user variable isn't null then the user signed in
     // therefore, letting the valid user navigate to the home page
     else {
-      return Home();
+      return const Home();
     }
 
   }

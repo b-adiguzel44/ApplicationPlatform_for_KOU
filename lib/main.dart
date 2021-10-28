@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:kou_basvuru_platform/models/user_Model.dart';
+import 'package:kou_basvuru_platform/screens/sayfalar/authenticate.dart';
 import 'package:kou_basvuru_platform/screens/wrapper.dart';
+import 'package:kou_basvuru_platform/services/fake_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:kou_basvuru_platform/services/auth.dart';
 import 'package:kou_basvuru_platform/models/my_user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,12 +23,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<User?>.value(
-      value: AuthService().user,
-      initialData: null,
-      child: MaterialApp(
-        home: Wrapper()
-      ),
+    return ChangeNotifierProvider<userModel>(
+      create: (context)=> userModel(),
+      child: MaterialApp( home: Authenticate()),
+
     );
   }
 }

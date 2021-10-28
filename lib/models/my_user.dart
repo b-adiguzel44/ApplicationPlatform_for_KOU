@@ -1,20 +1,41 @@
-// We'll be creating MyUser objects from tha data we're getting from
-// Firebase Authenticate and Firebase Firestore
+
+import 'package:flutter/material.dart';
 
 class MyUser {
+  final String? userID;
+  String? mail;
+  String? fotoUrl;
+  String? pozisyon;
+  String? ad;
+  String? soyad;
+  String? adres;
 
-  // Generates automatically in Firebase
-  late final String uid;
-  // This is always true because we're registering students all the time
-  bool isStudent = true;
+  MyUser({required this.userID, required this.mail, required this.pozisyon});
 
-  // Named Constructor
-  MyUser({required this.uid});
-
-  // Toggle User (Student / Admin) => just to be safe
-  void toggleUser()
-  {
-    isStudent = !isStudent;
+  Map<String, dynamic> toMap() {
+    return {
+      "userID": userID,
+      "mail": mail,
+      "fotoUrl": fotoUrl ?? "",
+      "pozisyon": pozisyon ?? "",
+      "ad":ad ?? "",
+      "soyad": soyad ?? "",
+      "adres" : adres ?? ""
+    };
   }
 
+  MyUser.fromMap(Map<String, dynamic> map)
+      :
+        userID = map['userID'],
+        mail = map['mail'],
+        fotoUrl = map['fotoUrl'],
+        pozisyon = map['pozisyon'],
+        ad = map['ad'],
+        soyad = map['soyad'],
+        adres = map['adres'];
+
+  @override
+  String toString() {
+    return 'MyUser{userID: $userID, mail: $mail, fotoUrl: $fotoUrl, pozisyon: $pozisyon, ad: $ad, soyad: $soyad, adres: $adres}';
+  }
 }
