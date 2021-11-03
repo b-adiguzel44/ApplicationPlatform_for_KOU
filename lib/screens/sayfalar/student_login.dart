@@ -66,7 +66,7 @@ class _StudentLoginState extends State<StudentLogin> {
       _formKey.currentState!.save();
       print(_email);
       print(_sifre);
-      final _userModel = Provider.of<userModel>(context, listen: true);
+      final _userModel = Provider.of<userModel>(context, listen: true);    // TODO : listen kısmını false yaptım normalde true
       String _girisYapanPozisyon = "Öğrenci";
       if (_formType == FormType.Login) {
         if (await _userModel.signInWithEmailAndPassword(

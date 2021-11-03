@@ -8,6 +8,7 @@ class YG_Form extends StatefulWidget {
 }
 
 class _YG_FormState extends State<YG_Form> {
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   // Stepper widget'ı
@@ -469,6 +470,7 @@ class _YG_FormState extends State<YG_Form> {
               ),
             );
           },
-        ));
+        )
+    );
   }
 }

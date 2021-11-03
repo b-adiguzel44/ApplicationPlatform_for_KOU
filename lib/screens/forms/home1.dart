@@ -3,7 +3,6 @@ import 'package:kou_basvuru_platform/screens/forms/ders_intibak_form.dart';
 import 'package:kou_basvuru_platform/screens/forms/dgs_form.dart';
 import 'package:kou_basvuru_platform/screens/forms/yataygecis_form.dart';
 import 'package:kou_basvuru_platform/screens/forms/yaz_okulu_form.dart';
-
 import 'package:kou_basvuru_platform/screens/forms/cap_form.dart';
 
 class Home extends StatelessWidget {
