@@ -122,55 +122,9 @@ class _DGSBasvuruState extends State<DGSBasvuru> with TickerProviderStateMixin {
           )
       );
     } else if(s=="Form")
-    {return Scaffold(
-        backgroundColor: Colors.green[100],
-        body: Center(
-            child: SingleChildScrollView(
-                child: Container(
-                    margin: const EdgeInsets.fromLTRB(15, 10, 15, 10), padding: const EdgeInsets.symmetric(vertical: 30),
-                    child: Column(
-                        children: <Widget>[
-                          SizedBox(height: 10,),
-                          TextFormField(
-                            enabled: false,
-                            initialValue: ad,
-                            decoration: InputDecoration(labelText: 'Ad',
-                                border: OutlineInputBorder()),
-                          ),
-                          SizedBox(height: 10,),
-                          TextFormField(
-                            enabled: false,
-                            initialValue: soyad,
-                            decoration: InputDecoration(labelText: 'Soyad',
-                                border: OutlineInputBorder()),
-                          ),
-                          SizedBox(height: 10,),
-                          TextFormField(
-                            enabled: false,
-                            initialValue: adres,
-                            decoration: InputDecoration(labelText: 'Adres',
-                                border: OutlineInputBorder()),
-                          ),
-                          SizedBox(height: 10,),
-                          TextFormField(
-                            enabled: false,
-                            initialValue: mail,
-                            decoration: InputDecoration(labelText: 'Mail',
-                                border: OutlineInputBorder()),
-                          ),
-                          SizedBox(height: 10,),
-                          SocailLoginButton(yukseklik:40, textColor: Colors.white,
-                              buttonColor:Colors.green,
-                              buttonText: "Devam Et",
-                              buttonIcon: Icon(null),
-                              onPress:() { _nextPage(1);}
-                          )
-                        ]
-                    )
-                )
-            )
-        )
-    );
+    {
+      // yakup abi barış abi
+      return Scaffold();
 
     }
     else if(s=="Belgeler")
