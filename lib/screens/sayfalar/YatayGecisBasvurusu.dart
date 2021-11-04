@@ -601,8 +601,7 @@ class _YatayGecisBasvuruState extends State<YatayGecisBasvuru>
                   // İlgili verileri sunucuya gönder
                   // Firebase kodları vs.
 
-                  // Form sayfasından çıkartıyorum
-                  // Navigator.pop(context);
+
                 }
                 // Son kısımda değilse ilerlemeye devam et
                 else {
