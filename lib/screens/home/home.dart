@@ -19,12 +19,26 @@ class Home extends StatelessWidget {
     String tabBarDurum = "";
     bool guncelleme = false;
     String? ad = "", soyad = "", kullaniciTipi = "", adres = "", mail = "";
+    String? telefon;
+    String? tcNo;
+    String? sinifNo;
+    String? dogumTarihi;
+    String? universite;
+    String? fakulte;
+    String? bolum;
     userModel _userModel = Provider.of<userModel>(context);
     ad = _userModel.user.ad;
     soyad = _userModel.user.soyad;
     adres = _userModel.user.adres;
     mail = _userModel.user.mail;
     kullaniciTipi = _userModel.user.pozisyon;
+    telefon = _userModel.user.telefon;
+    tcNo = _userModel.user.tcNo;
+    sinifNo = _userModel.user.sinifNo;
+    dogumTarihi = _userModel.user.dogumTarihi;
+    universite = _userModel.user.universite;
+    fakulte = _userModel.user.fakulte;
+    bolum = _userModel.user.bolum;
     buildPage(String s) {
       tabBarDurum = s;
 
@@ -153,6 +167,15 @@ class Home extends StatelessWidget {
                           ),
                           TextFormField(
                             enabled: guncelleme,
+                            initialValue: tcNo,
+                            decoration: InputDecoration(
+                                labelText: 'Tc No', border: OutlineInputBorder()),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            enabled: guncelleme,
                             initialValue: ad,
                             decoration: InputDecoration(
                                 labelText: 'Ad', border: OutlineInputBorder()),
@@ -176,6 +199,53 @@ class Home extends StatelessWidget {
                             decoration: InputDecoration(
                                 labelText: 'Adres',
                                 border: OutlineInputBorder()),
+                          ),
+                          TextFormField(
+                            initialValue: telefon,
+                            enabled: guncelleme,
+                            decoration: InputDecoration(
+                                labelText: 'Telefon',
+                                border: OutlineInputBorder()),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+
+                          TextFormField(
+                            initialValue: dogumTarihi,
+                            enabled: guncelleme,
+                            decoration: InputDecoration(
+                                labelText: 'Dogum Tarihi', border: OutlineInputBorder()),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            //controller: soyadController,
+                            enabled: guncelleme,
+                            initialValue: sinifNo,
+                            decoration: InputDecoration(
+                                labelText: 'Sınıf', border: OutlineInputBorder()),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            //controller: soyadController,
+                            enabled: guncelleme,
+                            initialValue: universite,
+                            decoration: InputDecoration(
+                                labelText: 'Üniversite', border: OutlineInputBorder()),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            //controller: adresController,
+                            enabled: guncelleme,
+                            initialValue: fakulte,
+                            decoration: InputDecoration(
+                                labelText: 'Fakülte', border: OutlineInputBorder()),
                           ),
                           SizedBox(
                             height: 20,

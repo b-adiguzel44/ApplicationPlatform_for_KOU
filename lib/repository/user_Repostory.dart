@@ -7,6 +7,7 @@ import 'package:kou_basvuru_platform/services/fake_auth.dart';
 import 'package:kou_basvuru_platform/services/firebase_auth_servise.dart';
 import 'package:kou_basvuru_platform/services/firebase_storage_service.dart';
 import 'package:kou_basvuru_platform/services/firestore_db_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 enum AppMode { DEBUG, RELEASE }
 
@@ -69,12 +70,12 @@ class UserRepostory implements AuthService {
   }
 
   Future<bool> UpdateUserName(
-      String UserId, String UserAd, String UserSoyad, String UserAdres) async {
+      String UserId, String UserAd, String UserSoyad, String UserAdres,String Telefon , String tcNo , String DogumTarih) async {
     if (appMode == AppMode.DEBUG) {
       return false;
     } else {
       return await _firestoreDBServise.updateUserAd(
-          UserId, UserAd, UserSoyad, UserAdres);
+          UserId, UserAd, UserSoyad, UserAdres , Telefon , tcNo , DogumTarih);
     }
   }
 
@@ -83,14 +84,31 @@ class UserRepostory implements AuthService {
   }
 
   Future<String> uploadFile(
-      String? userID, String fileType, File profilFoto) async {
+      String? userID, String fileType, File profilFoto, String dosyaAdi,) async {
     if (appMode == AppMode.DEBUG) {
       return "";
     } else {
       var profilFotoUrl =
-          await _firebaseStorage.uploadFile(userID!, fileType, profilFoto);
+          await _firebaseStorage.uploadFile(userID!, fileType, dosyaAdi,profilFoto );
       await _firestoreDBServise.updateProfilFoto(userID, profilFotoUrl);
       return profilFotoUrl;
     }
+  }
+  Future<bool> basvuruKaydet(MyUser user, String BasuruTuru) async{
+    if (appMode == AppMode.DEBUG) {
+      return false;
+    } else {
+      var sonuc = await _firestoreDBServise.basvuruKaydet(user, BasuruTuru);
+      return sonuc;
+    }
+
+  }
+  Future<List<String>>  basvuruGetir(){
+
+      var basvuruListesi = _firestoreDBServise.basvuruGetir();
+      return basvuruListesi;
+
+
+
   }
 }

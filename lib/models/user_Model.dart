@@ -9,6 +9,7 @@ import 'package:kou_basvuru_platform/models/my_user.dart';
 import 'package:kou_basvuru_platform/repository/user_Repostory.dart';
 import 'package:kou_basvuru_platform/services/auth.dart';
 import 'package:async/async.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 enum ViewState { Idle, Busy }
 
@@ -91,10 +92,10 @@ class userModel with ChangeNotifier implements AuthService {
   }
 
   Future<bool> UptadeUser(
-      String UserId, String UserAd, String UserSoyad, String UserAdres) async {
+      String UserId, String UserAd, String UserSoyad, String UserAdres, String Telefon , String tcNo , String DogumTarihi) async {
     bool sonuc;
     sonuc = await _userRepostory.UpdateUserName(
-        UserId, UserAd, UserSoyad, UserAdres);
+        UserId, UserAd, UserSoyad, UserAdres , Telefon , tcNo ,DogumTarihi);
     return sonuc;
   }
 
@@ -104,8 +105,20 @@ class userModel with ChangeNotifier implements AuthService {
   }
 
   Future<String> uploadFile(
-      String? userID, String fileType, File profilFoto) async {
-    var url = await _userRepostory.uploadFile(userID, fileType, profilFoto);
+      String? userID, String fileType, File profilFoto,String dosyaAdi,) async {
+    var url = await _userRepostory.uploadFile(userID, fileType, profilFoto,dosyaAdi);
     return url;
   }
+
+  Future<bool> basvuruKaydet(MyUser user, String BasuruTuru) async{
+    var sonuc = await _userRepostory.basvuruKaydet(user, BasuruTuru);
+    return sonuc;
+
+  }
+  Future<List<String>>  basvuruGetir() {
+    var basvuruListesi = _userRepostory.basvuruGetir();
+    return basvuruListesi ;
+
+  }
+
 }

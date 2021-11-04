@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kou_basvuru_platform/models/my_user.dart';
 import 'package:kou_basvuru_platform/services/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'dart:math';
 class FirestoreDBServise implements DataBaseService {
   final FirebaseFirestore _firestoreAuth = FirebaseFirestore.instance;
   @override
@@ -31,11 +31,11 @@ class FirestoreDBServise implements DataBaseService {
 
   @override
   Future<bool> updateUserAd(
-      String UserId, String UserAd, String UserSoyad, String UserAdres) async {
+      String UserId, String UserAd, String UserSoyad, String UserAdres , String Telefon , String tcNo , String DogumTarih ) async {
     await _firestoreAuth
         .collection("Kullanıcılar")
         .doc(UserId)
-        .update({"ad": UserAd, "soyad": UserSoyad, "adres": UserAdres});
+        .update({"ad": UserAd, "soyad": UserSoyad, "adres": UserAdres ,"telefon": Telefon, "tcNo": tcNo, "dogumTarihi": DogumTarih });
     return true;
   }
 
@@ -46,4 +46,42 @@ class FirestoreDBServise implements DataBaseService {
     });
     return true;
   }
-}
+  int basvuru=1;
+
+  @override
+  Future<bool> basvuruKaydet(MyUser user, String BasuruTuru) async{
+    basvuru++;
+    String id = basvuru.toString();
+    await _firestoreAuth
+        .collection("Basvuru")
+        .doc(id)
+        .set(user.toBasvuru(BasuruTuru));
+    return true;
+  }
+
+  @override
+  Future<List<String>> basvuruGetir() async{
+
+
+   var ref=  await _firestoreAuth.collection("Basvuru").get().then((QuerySnapshot querySnapshot) {
+     List<DataRow> basvuruList= querySnapshot.docs.map((DocumentSnapshot documentSnapshot)
+     {
+       return new DataRow( cells: [
+        // DataCell(Text(documentSnapshot.data()!['userId'])),
+       //  DataCell(Text(documentSnapshot.data()!['userId'])),
+       ]
+
+       );
+     }).toList();
+
+   });
+   //return basvuruList;
+
+
+    // TODO: implement basvuruGetir
+    throw UnimplementedError();
+  }
+
+
+  }
+

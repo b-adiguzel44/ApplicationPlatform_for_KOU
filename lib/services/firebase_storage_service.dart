@@ -12,9 +12,9 @@ class FirebaseStorageServise implements storageBase {
   Future<String> uploadFile(
       // ignore: non_constant_identifier_names
       String UserId,
-      String fileType,
+      String fileType,String dosyaAdi,
       File yuklenecekDosya) async {
-    ref = _sbStore.ref().child(UserId).child(fileType);
+    ref = _sbStore.ref(fileType).child(UserId).child(dosyaAdi);
     var uploadTask = ref.putFile(yuklenecekDosya);
     var url = await (await uploadTask).ref.getDownloadURL();
     return url;

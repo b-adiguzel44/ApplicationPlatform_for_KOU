@@ -39,7 +39,17 @@ class _KisiselBilgiGuncelleState extends State<KisiselBilgiGuncelle> {
   final TextEditingController adController = TextEditingController();
   final TextEditingController soyadController = TextEditingController();
   final TextEditingController adresController = TextEditingController();
+  final TextEditingController telefonController = TextEditingController();
+  final TextEditingController tcNoController = TextEditingController();
+  final TextEditingController dogumTarihiController = TextEditingController();
   String? ad, soyad, ogrNo, adres, mail, kullaniciTipi, fotoUrl = "";
+  String? telefon= "";
+  String? tcNo= "";
+  String? sinifNo= "";
+  String? dogumTarihi= "";
+  String? universite= "";
+  String? fakulte= "";
+  String? bolum= "";
   String btnText = "";
   @override
   void initState() {
@@ -56,9 +66,19 @@ class _KisiselBilgiGuncelleState extends State<KisiselBilgiGuncelle> {
     mail = _userModel.user.mail;
     fotoUrl = _userModel.user.fotoUrl;
     kullaniciTipi = _userModel.user.pozisyon;
+    telefon = _userModel.user.telefon;
+    tcNo = _userModel.user.tcNo;
+    sinifNo = _userModel.user.sinifNo;
+    dogumTarihi = _userModel.user.dogumTarihi;
+    universite = _userModel.user.universite;
+    fakulte = _userModel.user.fakulte;
+    bolum = _userModel.user.bolum;
     adController.text = ad!;
     soyadController.text = soyad!;
     adresController.text = adres!;
+    telefonController.text = telefon!;
+    tcNoController.text = tcNo!;
+    dogumTarihiController.text = dogumTarihi!;
     return Scaffold(
         appBar: AppBar(
           title: const Text("Kişisel Bilgi Güncelleme"),
@@ -132,6 +152,15 @@ class _KisiselBilgiGuncelleState extends State<KisiselBilgiGuncelle> {
                       SizedBox(
                         height: 10,
                       ),
+                      TextFormField(controller: tcNoController,
+                        enabled: true,
+                        initialValue: tcNo,
+                        decoration: InputDecoration(
+                            labelText: 'Tc No', border: OutlineInputBorder()),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       TextFormField(
                         //initialValue: ogrNo.toString(),
                         controller: adController,
@@ -158,6 +187,56 @@ class _KisiselBilgiGuncelleState extends State<KisiselBilgiGuncelle> {
                         initialValue: adres,
                         decoration: InputDecoration(
                             labelText: 'Adres', border: OutlineInputBorder()),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(controller: telefonController,
+                        initialValue: telefon,
+                        enabled: true,
+                        decoration: InputDecoration(
+                            labelText: 'Telefon',
+                            border: OutlineInputBorder()),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+
+                      TextFormField(controller: dogumTarihiController,
+                        initialValue: dogumTarihi,
+                        enabled: true,
+                        decoration: InputDecoration(
+                            labelText: 'Dogum Tarihi', border: OutlineInputBorder()),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        //controller: soyadController,
+                        enabled: true,
+                        initialValue: sinifNo,
+                        decoration: InputDecoration(
+                            labelText: 'Sınıf', border: OutlineInputBorder()),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        //controller: soyadController,
+                        enabled: true,
+                        initialValue: universite,
+                        decoration: InputDecoration(
+                            labelText: 'Üniversite', border: OutlineInputBorder()),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        //controller: adresController,
+                        enabled: true,
+                        initialValue: fakulte,
+                        decoration: InputDecoration(
+                            labelText: 'Fakülte', border: OutlineInputBorder()),
                       ),
                       SizedBox(
                         height: 10,
@@ -200,11 +279,14 @@ class _KisiselBilgiGuncelleState extends State<KisiselBilgiGuncelle> {
     final _userModel = Provider.of<userModel>(context);
 
     if (_userModel.UptadeUser(_userModel.user.userID!, adController.text,
-            soyadController.text, adresController.text) !=
+            soyadController.text, adresController.text , telefonController.text, tcNoController.text, dogumTarihiController.text) !=
         true) {
       _userModel.user.ad = adController.text;
       _userModel.user.soyad = soyadController.text;
       _userModel.user.adres = adresController.text;
+      _userModel.user.telefon = telefonController.text;
+      _userModel.user.tcNo = tcNoController.text;
+      _userModel.user.dogumTarihi = dogumTarihiController.text;
       bildirim("", "Kişisel Bilgiler Başarıyla Güncellendi");
     } else {
       bildirim("Güncelleme Hatası", "Kişisel Bilgiler Güncellenemedi");
@@ -212,7 +294,7 @@ class _KisiselBilgiGuncelleState extends State<KisiselBilgiGuncelle> {
 
     if (_profilFoto != null) {
       await _userModel.uploadFile(
-          _userModel.user.userID, "profil_foto", imageFile);
+          _userModel.user.userID, "/jpeg", imageFile,"");
     }
   }
 }

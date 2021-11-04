@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kou_basvuru_platform/models/my_user.dart';
 import 'package:kou_basvuru_platform/models/user_Model.dart';
 import 'package:kou_basvuru_platform/screens/sayfalar/KisiselBilgiGuncelleme.dart';
 import 'package:kou_basvuru_platform/widget/social_login_button.dart';
 import 'package:provider/provider.dart';
+
 
 class AdminHome extends StatelessWidget {
   const AdminHome({Key? key}) : super(key: key);
@@ -23,12 +25,35 @@ class AdminHome extends StatelessWidget {
       if (tabBarDurum == "Basvuru") {
         return Scaffold(
             backgroundColor: Colors.green[100],
-            body: Center(
-                child: SingleChildScrollView(
-                    child: Container(
-                        margin: const EdgeInsets.fromLTRB(30, 10, 30, 10),
-                        padding: const EdgeInsets.symmetric(vertical: 30),
-                        child: Column()))));
+            body: FutureBuilder<List<String>>(
+              future: _userModel.basvuruGetir(),
+              builder: (context,snapshot){
+                if(snapshot.hasData)
+                  {
+                    var basvurular = snapshot.data;
+                    if(basvurular!.length>0)
+                      {
+                         return ListView.builder(
+                           itemCount: basvurular.length,
+                           itemBuilder: (context,index){
+                             return ListTile(title: Text(snapshot.data![index]),);
+                           }
+
+                        );
+                      }
+                    else
+                      {
+                        return Center(child: Text("Kayıtlı Başvuru Bulunamadı"),);
+                      }
+
+                  }
+                else
+                  return Center(child: CircularProgressIndicator());
+
+              }
+            ),
+
+                        );
       } else if (tabBarDurum == "Basvurular") {
         return Scaffold(
             backgroundColor: Colors.green[100],
